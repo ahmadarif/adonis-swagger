@@ -13,7 +13,7 @@ class SwaggerRemoveDocs extends Command {
   }
 
   async handle (args, options) {
-    this.info('Removing docs file')
+    this.info('Removing assets from public folder (public/docs)')
     await this.removeDir('public/docs')
 
     this.success(`${this.icon('success')} Completed`)

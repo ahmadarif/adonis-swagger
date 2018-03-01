@@ -13,10 +13,10 @@ class SwaggerExport extends Command {
   }
 
   async handle (args, options) {
-    this.info('Exporting assets to public folder')
+    this.info('Exporting assets to public folder (public/docs)')
     await this.copy(path.join(__dirname, '../public/docs'), 'public/docs')
 
-    this.info('Exporting swagger configuration')
+    this.info('Exporting swagger configuration (config/swagger.js)')
     await this.copy(path.join(__dirname, '../config/swagger.js'), 'config/swagger.js')
 
     this.success(`${this.icon('success')} Completed`)

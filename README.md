@@ -22,7 +22,12 @@ adonis swagger:export
 ```
 
 # Sample Usage
-* Sample usage in Controllers
+* Add new route
+  ```js
+  Route.get('/api/hello', 'TestController.hello')
+  ```
+  
+* Create `TestController` using command `adonis make:controller Test`
   ```js
   'use strict'
 
@@ -56,7 +61,7 @@ adonis swagger:export
   module.exports = TestController
   ```
 
-* Sample usage in Models
+* Sample usage in Models (optional, just for sample)
   ```js
   'use strict'
 
