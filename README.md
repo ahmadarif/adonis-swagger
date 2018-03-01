@@ -116,6 +116,11 @@ Command                       | Description
  `adonis swagger:export`      | Export config file & swagger-ui assets
  `adonis swagger:remove`      | Remove config file & swagger-ui assets
  `adonis swagger:remove-docs` | Remove swagger-ui only
+
+# Dependencies
+- [swagger-jsdocs](https://www.npmjs.com/package/swagger-jsdoc)
+- [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist)
+
 # Thanks
 Special thanks to the creator(s) of [AdonisJS][AdonisJS] for creating such a great framework.
 
