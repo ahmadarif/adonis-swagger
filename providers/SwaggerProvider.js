@@ -9,8 +9,8 @@ class SwaggerProvider extends ServiceProvider {
     const swaggerJSDoc = use('swagger-jsdoc')
     const Config = use('Config')
 
-    const apis = ['app/**/*.js', 'start/routes.js']
-    const apisConfig = Config.get('swagger.apis')
+    let apis = ['app/**/*.js', 'start/routes.js']
+    let apisConfig = Config.get('swagger.apis')
     apis = apis.concat(apisConfig)
 
     Route.get('/swagger.json', async ({ response }) => {
