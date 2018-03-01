@@ -7,19 +7,21 @@ You can install the package from npm.
 npm install --save adonis-swagger
 ```
 
-# Configure
-Register it in start/app.js:
-```js
-const providers = [
-  ...
-  'adonis-swagger/providers/SwaggerProvider'
-]
-```
+# Configuration
+* Register `SwaggerProvider` in `start/app.js`:
+  ```js
+  const providers = [
+    ...
+    'adonis-swagger/providers/SwaggerProvider'
+  ]
+  ```
 
-And then, export the assets and config file using command:
-```
-adonis swagger:export
-```
+* And then, export the assets and config file using command:
+  ```
+  adonis swagger:export
+  ```
+
+* Other configuration please update the `config/swagger.js` file.
 
 # Sample Usage
 * Add new route
@@ -105,6 +107,8 @@ adonis swagger:export
 
   module.exports = User
   ```
+
+* Other sample in YAML and JS format please refer this [link](/sample)
 
 
 Open http://localhost:3333/docs in your browser, ayeey 🎉 </br>
