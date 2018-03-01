@@ -3,13 +3,13 @@
 const { Command } = require('@adonisjs/ace')
 const path = require('path')
 
-class SwaggerExport extends Command {
+class SwaggerRemoveDocs extends Command {
   static get signature () {
     return 'swagger:remove-docs'
   }
 
   static get description () {
-    return 'Remove docs from public'
+    return 'Remove swagger-ui only'
   }
 
   async handle (args, options) {
@@ -20,4 +20,4 @@ class SwaggerExport extends Command {
   }
 }
 
-module.exports = SwaggerExport
+module.exports = SwaggerRemoveDocs

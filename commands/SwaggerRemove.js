@@ -3,7 +3,7 @@
 const { Command } = require('@adonisjs/ace')
 const path = require('path')
 
-class SwaggerExport extends Command {
+class SwaggerRemove extends Command {
   static get signature () {
     return 'swagger:remove'
   }
@@ -23,4 +23,4 @@ class SwaggerExport extends Command {
   }
 }
 
-module.exports = SwaggerExport
+module.exports = SwaggerRemove
