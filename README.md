@@ -111,11 +111,11 @@ Open http://localhost:3333/docs in your browser, ayeey 🎉 </br>
 For detail usage, please check the swagger specification in this [link][SwaggerSpec].
 
 # Command List
-Command                  | Description
-:------------------------|:-----------
- `adonis swagger:export` | Export config file & swagger-ui assets
- `adonis swagger:remove` | Remove config file & swagger-ui assets
- `swagger:remove-docs`   | Remove swagger-ui only
+Command                       | Description
+:-----------------------------|:-----------
+ `adonis swagger:export`      | Export config file & swagger-ui assets
+ `adonis swagger:remove`      | Remove config file & swagger-ui assets
+ `adonis swagger:remove-docs` | Remove swagger-ui only
 # Thanks
 Special thanks to the creator(s) of [AdonisJS][AdonisJS] for creating such a great framework.
 
