@@ -1,0 +1,19 @@
+{
+  "name": "adonis-swagger",
+  "version": "1.0.0",
+  "description": "Swagger Provider for Adonis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "adonis",
+    "swagger",
+    "documentation"
+  ],
+  "author": "Ahmad Arif <ahmad.arif019@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "swagger-jsdoc": "^1.9.7"
+  }
+}
