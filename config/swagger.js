@@ -8,5 +8,9 @@ module.exports = {
   */
   title: 'Adonis 💘 Swagger',
   version: '1.0.0',
-  basePath: '/api'
+  basePath: '/api',
+
+  // Path to the API docs
+  // apis: ['app/docs/**/*']
+  apis: [] 
 }
