@@ -11,3 +11,5 @@ deploy:
     tags: true
 install:
 - npm install
+script:
+- node -v
