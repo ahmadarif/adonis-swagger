@@ -1,6 +1,6 @@
 {
   "name": "adonis-swagger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Swagger Provider for Adonis",
   "main": "index.js",
   "scripts": {

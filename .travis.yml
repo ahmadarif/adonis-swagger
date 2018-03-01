@@ -1,0 +1,12 @@
+node_js:
+- 8.9.1
+sudo: false
+deploy:
+  provider: npm
+  email: ahmad.arif019@gmail.com
+  api_key:
+    secure: DAs0gL+BRQ/zNDPOnlgEiSdJmqNh8z3PCWu5Ie4MtsQEQJncRv4I5IesdbC6BajqZBHmpCDavCP1O7CEen6nhfZtpvFq0xANCouso8z8KZ4syk+TFCDIkF+YotTvvBbSzNloI96XNla5nGe+sAIgkVyrkTJNWkir3RFZo7xrbTH4Jf8wU5q9mJfETqawlMmObSYaej+WbOrITl4/RLAOro68bVzlJ+6cHl6RvgRA5W2rGBbQI+vvzLIf7ZO0fOXnFL3il0oJZp6hFxFhiHNqhMAAVWpSaYIDhoEStXavu+LmU2FEFyaCMCPRNhOBPAh2XUmB+L7ktyXkLgiyEsm8k9bRGHJ20icjg/aCcXIvcEqkY35bAaiFNhtfCcf+TxYCjTqWfY71rsvNnUUCPD4XAzITheMI1PuNgsbZodCglVnogW3uMwXNYiENSzKgB/VdTPJDH+JjpcvLCpOotR2zfDgH+e2HQ3Ts03FRbtTLrNnkvWmRg8awLTTHVXpYfQakqCYfJHPM/wiIBGJ3l+lPCDNex8n0MgdczOpnejb42YUceMcSjtb4qCZcfG0DXbuSSOY/zLaaDUQhgqJi44XnKgFY2jOA52L9iF2+VspIf2ENw+wV1fDXEkTdyCAgmp5kG6Sw8HyoawAbvjsHM1RzWuzVnmNSGwd0/DA53tgS2oc=
+  on:
+    tags: true
+install:
+- npm install
