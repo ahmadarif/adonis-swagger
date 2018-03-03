@@ -1,29 +1,12 @@
-# Adonis Swagger
-Create documentation easily in Adonis 4.x using [Swagger][Swagger] 😍
-
-# Installation
-You can install the package from npm.
+# Registering provider
+```js
+const providers = [
+  ...
+  'adonis-swagger/providers/SwaggerProvider'
+]
 ```
-npm install --save adonis-swagger
-```
 
-# Configuration
-* Register `SwaggerProvider` in `start/app.js`:
-  ```js
-  const providers = [
-    ...
-    'adonis-swagger/providers/SwaggerProvider'
-  ]
-  ```
-
-* And then, export the assets and config file using command:
-  ```
-  adonis swagger:export
-  ```
-
-* Other configuration please update the `config/swagger.js` file.
-
-# Sample Usage
+# Usage
 * Add new route
   ```js
   Route.get('/api/hello', 'TestController.hello')
@@ -108,26 +91,6 @@ npm install --save adonis-swagger
   │       ├── **/*.yml
   ```
 
-* Other sample in YAML and JS format please refer this [link](/sample)
+  > For custom directory, please change the `config/swagger.js` as needed.
 
-
-Open http://localhost:3333/docs in your browser, ayeey 🎉 </br>
-For detail usage, please check the swagger specification in this [link][SwaggerSpec].
-
-# Command List
-Command                       | Description
-:-----------------------------|:-----------
- `adonis swagger:export`      | Export config file & swagger-ui assets
- `adonis swagger:remove`      | Remove config file & swagger-ui assets
- `adonis swagger:remove-docs` | Remove swagger-ui only
-
-# Dependencies
-- [swagger-jsdocs](https://www.npmjs.com/package/swagger-jsdoc)
-- [swagger-ui-dist](https://www.npmjs.com/package/swagger-ui-dist)
-
-# Thanks
-Special thanks to the creator(s) of [AdonisJS][AdonisJS] for creating such a great framework.
-
-[Swagger]:https://swagger.io/
-[SwaggerSpec]:https://swagger.io/specification/
-[AdonisJS]: http://adonisjs.com/
+* Other sample in YAML and JS format please refer this [link](https://github.com/ahmadarif/adonis-swagger/tree/master/sample)
