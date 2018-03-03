@@ -1,6 +1,8 @@
 # Adonis Swagger
 Create documentation easily in Adonis 4.x using [Swagger][Swagger] 😍
 
+[![npm version](https://badge.fury.io/js/adonis-swagger.svg)](https://badge.fury.io/js/adonis-swagger)
+
 # Installation
 ```
 adonis install adonis-swagger
