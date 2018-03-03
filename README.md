@@ -2,7 +2,11 @@
 Create documentation easily in Adonis 4.x using [Swagger][Swagger] 😍
 
 # Installation
-You can install the package from npm.
+```
+adonis install adonis-swagger
+```
+
+Or you can install the package using npm
 ```
 npm install --save adonis-swagger
 ```
@@ -16,7 +20,7 @@ npm install --save adonis-swagger
   ]
   ```
 
-* And then, export the assets and config file using command:
+* And then, export the assets and config file using command (no need to do, if install using `adonis install`):
   ```
   adonis swagger:export
   ```
