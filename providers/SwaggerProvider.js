@@ -59,7 +59,6 @@ class SwaggerProvider extends ServiceProvider {
    */
   register () {
     this._registerCommands()
-    this._addCommands()
   }
 
   /**
@@ -70,6 +69,7 @@ class SwaggerProvider extends ServiceProvider {
    * @return {void}
    */
   boot() {
+    this._addCommands()
     this._addRoutes()
   }
 
