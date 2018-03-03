@@ -4,7 +4,7 @@ const { ServiceProvider } = require('@adonisjs/fold')
 
 class SwaggerProvider extends ServiceProvider {
 
-  _registerRoutes() {
+  _addRoutes() {
     const Route = use('Route')
     const swaggerJSDoc = use('swagger-jsdoc')
     const Config = use('Config')
@@ -43,6 +43,13 @@ class SwaggerProvider extends ServiceProvider {
     this.app.bind('Adonis/Commands/SwaggerRemoveDocs', () => require('../commands/SwaggerRemoveDocs'))
   }
 
+  _addCommands() {
+    const ace = require('@adonisjs/ace')
+    ace.addCommand('Adonis/Commands/SwaggerExport')
+    ace.addCommand('Adonis/Commands/SwaggerRemove')
+    ace.addCommand('Adonis/Commands/SwaggerRemoveDocs')
+  }
+
   /**
    * Register all the required providers
    *
@@ -52,7 +59,7 @@ class SwaggerProvider extends ServiceProvider {
    */
   register () {
     this._registerCommands()
-    this._registerRoutes()
+    this._addCommands()
   }
 
   /**
@@ -63,10 +70,7 @@ class SwaggerProvider extends ServiceProvider {
    * @return {void}
    */
   boot() {
-    const ace = require('@adonisjs/ace')
-    ace.addCommand('Adonis/Commands/SwaggerExport')
-    ace.addCommand('Adonis/Commands/SwaggerRemove')
-    ace.addCommand('Adonis/Commands/SwaggerRemoveDocs')
+    this._addRoutes()
   }
 
 }

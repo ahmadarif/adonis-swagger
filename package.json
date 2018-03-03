@@ -4,7 +4,7 @@
   "description": "Swagger Provider for Adonis",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No test specified\""
+    "test": "./node_modules/.bin/japa"
   },
   "keywords": [
     "adonis",
@@ -19,5 +19,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ahmadarif/adonis-swagger"
+  },
+  "devDependencies": {
+    "@adonisjs/ace": "^5.0.0",
+    "@adonisjs/fold": "^4.0.7",
+    "japa": "^1.0.6",
+    "japa-cli": "^1.0.1"
   }
 }
