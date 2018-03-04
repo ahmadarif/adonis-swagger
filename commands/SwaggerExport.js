@@ -5,7 +5,10 @@ const path = require('path')
 
 class SwaggerExport extends Command {
   static get signature () {
-    return 'swagger:export'
+    return `
+      swagger:export
+      { --silent : Hide the console log }
+    `
   }
 
   static get description () {
@@ -13,13 +16,13 @@ class SwaggerExport extends Command {
   }
 
   async handle (args, options) {
-    this.info('Exporting assets to public folder (public/docs)')
+    if (!options.silent) this.info('Exporting assets to public folder (public/docs)')
     await this.copy(path.join(__dirname, '../templates/docs'), 'public/docs')
 
-    this.info('Exporting swagger configuration (config/swagger.js)')
+    if (!options.silent) this.info('Exporting swagger configuration (config/swagger.js)')
     await this.copy(path.join(__dirname, '../templates/config.js'), 'config/swagger.js')
 
-    this.success(`${this.icon('success')} Completed`)
+    if (!options.silent) this.success(`${this.icon('success')} Completed`)
   }
 }
 

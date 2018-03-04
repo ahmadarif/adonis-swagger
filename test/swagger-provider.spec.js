@@ -17,44 +17,41 @@ test.group('Swagger provider test', (group) => {
     ace.addCommand('Adonis/Commands/SwaggerRemoveDocs')
   })
 
-  test('SwaggerExport command test', async (assert) => {
-    // check is command available
+  test('Check is swagger:export command available', async (assert) => {
     assert.equal('swagger:export', ioc.use('Adonis/Commands/SwaggerExport')._name)
+  }).timeout(0)
 
-    /*
+  test('Check is swagger:remove command available', async (assert) => {
+    assert.equal('swagger:remove', ioc.use('Adonis/Commands/SwaggerRemove')._name)
+  }).timeout(0)
+
+  test('Check is swagger:remove-docs command available', async (assert) => {
+    assert.equal('swagger:remove-docs', ioc.use('Adonis/Commands/SwaggerRemoveDocs')._name)
+  }).timeout(0)
+  
+  test('Execute swagger:export command test', async (assert) => {
     // execute command
-    await ace.call('swagger:export')
+    await ace.call('swagger:export', null, { silent: true })
     
-    // check file/dir is exists
+    // check config and docs is exists
     assert.isTrue(isExists(path.join(__dirname, '../public/docs')))
     assert.isTrue(isExists(path.join(__dirname, '../config/swagger.js')))
-    */
-  }).timeout(0)
-
-  test('SwaggerRemove command test', async (assert) => {
-    // check is command available
-    assert.equal('swagger:remove', ioc.use('Adonis/Commands/SwaggerRemove')._name)
-
-    /*
+  })
+  
+  test('Execute swagger:remove command test', async (assert) => {
     // execute command
-    await ace.call('swagger:remove')
+    await ace.call('swagger:remove', null, { silent: true })
 
-    // check file/dir is exists
+    // check is config and docs not exists
     assert.isFalse(isExists(path.join(__dirname, '../public/docs')))
     assert.isFalse(isExists(path.join(__dirname, '../config/swagger.js')))
-    */
-  }).timeout(0)
+  })
 
-  test('SwaggerRemoveDocs command test', async (assert) => {
-    // check is command available
-    assert.equal('swagger:remove-docs', ioc.use('Adonis/Commands/SwaggerRemoveDocs')._name)
-
-    /*
+  test('Execute swagger:remove-docs command test', async (assert) => {
     // execute command
-    await ace.call('swagger:remove-docs')
+    await ace.call('swagger:remove-docs', null, { silent: true })
 
-    // check docs is exists
+    // check is docs not exists
     assert.isFalse(isExists(path.join(__dirname, '../public/docs')))
-    */
-  }).timeout(0)
+  })
 })

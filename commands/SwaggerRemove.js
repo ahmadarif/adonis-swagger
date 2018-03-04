@@ -5,7 +5,10 @@ const path = require('path')
 
 class SwaggerRemove extends Command {
   static get signature () {
-    return 'swagger:remove'
+    return `
+      swagger:remove
+      { --silent : Hide the console log }
+    `
   }
 
   static get description () {
@@ -13,13 +16,13 @@ class SwaggerRemove extends Command {
   }
 
   async handle (args, options) {
-    this.info('Removing assets from public folder (public/docs)')
+    if (!options.silent) this.info('Removing assets from public folder (public/docs)')
     await this.removeDir('public/docs')
 
-    this.info('Removing swagger configuration (config/swagger.js)')
+    if (!options.silent) this.info('Removing swagger configuration (config/swagger.js)')
     await this.removeFile('config/swagger.js')
 
-    this.success(`${this.icon('success')} Completed`)
+    if (!options.silent) this.success(`${this.icon('success')} Completed`)
   }
 }
 
