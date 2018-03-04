@@ -4,7 +4,8 @@
   "description": "Swagger Provider for Adonis",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/japa"
+    "test": "./node_modules/.bin/japa",
+    "coverage": "nyc npm test"
   },
   "keywords": [
     "adonis",
@@ -24,6 +25,15 @@
     "@adonisjs/ace": "^5.0.0",
     "@adonisjs/fold": "^4.0.7",
     "japa": "^1.0.6",
-    "japa-cli": "^1.0.1"
+    "japa-cli": "^1.0.1",
+    "nyc": "^11.4.1"
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+    ]
   }
 }

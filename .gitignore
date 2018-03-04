@@ -1,3 +1,5 @@
 node_modules/
 public/
 config/
+coverage/
+.nyc_output/
