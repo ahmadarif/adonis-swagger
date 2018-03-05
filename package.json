@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/japa",
-    "posttest": "npm run coverage",
     "pretest": "npm run lint",
-    "coverage": "nyc report --reporter=html --reporter=lcov --reporter=text --reporter=text-summary",
+    "coverage": "nyc npm run test",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
@@ -33,6 +32,14 @@
     "japa-cli": "^1.0.1",
     "nyc": "^11.4.1",
     "standard": "^11.0.0"
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+    ]
   },
   "standard": {
     "ignore": [

@@ -4,6 +4,8 @@ node_js:
 sudo: false
 install:
 - npm install
+script:
+- npm run coverage
 deploy:
   provider: npm
   email: ahmad.arif019@gmail.com
