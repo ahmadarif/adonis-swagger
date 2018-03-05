@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/japa",
     "posttest": "npm run coverage",
     "pretest": "npm run lint",
-    "coverage": "nyc report --reporter=html --reporter=lcov --reporter=text --reporter=text-summary --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmadarif/adonis-swagger.git"
+    "url": "https://github.com/ahmadarif/adonis-swagger"
   },
   "devDependencies": {
     "@adonisjs/ace": "^5.0.0",
