@@ -3,17 +3,13 @@
 [![build status](https://travis-ci.org/ahmadarif/adonis-swagger.svg?branch=master)](https://travis-ci.org/ahmadarif/adonis-swagger)
 [![npm](https://img.shields.io/npm/dt/adonis-swagger.svg)](https://www.npmjs.com/package/adonis-swagger)
 [![npm](https://img.shields.io/npm/l/adonis-swagger.svg)](https://www.npmjs.com/package/adonis-swagger)
+[![Coverage Status](https://coveralls.io/repos/github/ahmadarif/adonis-swagger/badge.svg)](https://coveralls.io/github/ahmadarif/adonis-swagger)
 
 Create documentation easily in Adonis 4.x using [Swagger][Swagger] 😍
 
 # Installation
 ```
 adonis install adonis-swagger
-```
-
-Or you can install the package using npm
-```
-npm install --save adonis-swagger
 ```
 
 # Configuration
@@ -23,11 +19,6 @@ npm install --save adonis-swagger
     ...
     'adonis-swagger/providers/SwaggerProvider'
   ]
-  ```
-
-* And then, export the assets and config file using command (no need to do, if install using `adonis install`):
-  ```
-  adonis swagger:export
   ```
 
 * Other configuration please update the `config/swagger.js` file.
