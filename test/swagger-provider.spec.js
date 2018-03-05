@@ -28,16 +28,16 @@ test.group('Swagger provider test', (group) => {
   test('Check is swagger:remove-docs command available', async (assert) => {
     assert.equal('swagger:remove-docs', ioc.use('Adonis/Commands/SwaggerRemoveDocs')._name)
   }).timeout(0)
-  
+
   test('Execute swagger:export command test', async (assert) => {
     // execute command
     await ace.call('swagger:export', null, { silent: true })
-    
+
     // check config and docs is exists
     assert.isTrue(isExists(path.join(__dirname, '../public/docs')))
     assert.isTrue(isExists(path.join(__dirname, '../config/swagger.js')))
   })
-  
+
   test('Execute swagger:remove command test', async (assert) => {
     // execute command
     await ace.call('swagger:remove', null, { silent: true })

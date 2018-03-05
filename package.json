@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/japa",
-    "coverage": "nyc npm test"
+    "posttest": "npm run coverage",
+    "pretest": "npm run lint",
+    "coverage": "nyc report --reporter=html --reporter=lcov --reporter=text --reporter=text-summary --reporter=text-lcov | coveralls",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "keywords": [
     "adonis",
@@ -19,11 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahmadarif/adonis-swagger"
+    "url": "git+https://github.com/ahmadarif/adonis-swagger.git"
   },
   "devDependencies": {
     "@adonisjs/ace": "^5.0.0",
     "@adonisjs/fold": "^4.0.7",
+    "coveralls": "^3.0.0",
     "japa": "^1.0.6",
     "japa-cli": "^1.0.1",
     "nyc": "^11.4.1"
@@ -34,6 +39,16 @@
       "lcov",
       "text",
       "text-summary"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "**/out/",
+      "/templates/"
+    ],
+    "globals": [
+      "use",
+      "make"
     ]
   }
 }

@@ -1,7 +1,6 @@
 'use strict'
 
 const { Command } = require('@adonisjs/ace')
-const path = require('path')
 
 class SwaggerRemoveDocs extends Command {
   static get signature () {
