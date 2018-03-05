@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/japa",
     "posttest": "npm run coverage",
     "pretest": "npm run lint",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=html --reporter=lcov --reporter=text --reporter=text-summary",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
@@ -34,17 +34,8 @@
     "nyc": "^11.4.1",
     "standard": "^11.0.0"
   },
-  "nyc": {
-    "reporter": [
-      "html",
-      "lcov",
-      "text",
-      "text-summary"
-    ]
-  },
   "standard": {
     "ignore": [
-      "**/out/",
       "/templates/"
     ],
     "globals": [
