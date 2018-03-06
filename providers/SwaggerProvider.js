@@ -12,28 +12,40 @@ class SwaggerProvider extends ServiceProvider {
     let apisConfig = Config.get('swagger.apis')
     apis = apis.concat(apisConfig)
 
-    Route.get('/swagger.json', async ({ response }) => {
-      const options = {
-        swaggerDefinition: {
-          info: {
-            title: Config.get('swagger.title'),
-            version: Config.get('swagger.version')
-          },
-          basePath: Config.get('swagger.basPath'),
-          securityDefinitions: {
-            'API Token': {
-              'type': 'apiKey',
-              'description': "add 'Bearer ' before token",
-              'name': 'Authorization',
-              'in': 'header'
+    if (Config.get('swagger.enable')) {
+      Route.get('/swagger.json', async ({ response }) => {
+        const options = {
+          swaggerDefinition: {
+            info: {
+              title: Config.get('swagger.title'),
+              version: Config.get('swagger.version')
+            },
+            basePath: Config.get('swagger.basePath'),
+            securityDefinitions: {
+              'ApiKey': {
+                'type': 'apiKey',
+                'description': Config.get('swagger.securityDefinitions.ApiKey.description'),
+                'name': Config.get('swagger.securityDefinitions.ApiKey.name'),
+                'in': 'header'
+              },
+              'BasicAuth': {
+                'type': 'basic'
+              },
+              'OAuth2': {
+                'type': 'oauth2',
+                'flow': 'accessCode',
+                'authorizationUrl': Config.get('swagger.securityDefinitions.OAuth2.authorizationUrl'),
+                'tokenUrl': Config.get('swagger.securityDefinitions.OAuth2.tokenUrl'),
+                'scopes': Config.get('swagger.securityDefinitions.OAuth2.scopes')
+              }
             }
-          }
-        },
-        apis: apis
-      }
+          },
+          apis: apis
+        }
 
-      return swaggerJSDoc(options)
-    })
+        return swaggerJSDoc(options)
+      })
+    }
   }
 
   _registerCommands () {
