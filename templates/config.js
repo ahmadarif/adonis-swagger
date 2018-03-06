@@ -10,7 +10,7 @@ module.exports = {
   */
 
   // enable or disable route '/swagger.json'
-  enable: false,
+  enable: true,
  
   title: 'Adonis 💘 Swagger',
   version: '1.0.0',
