@@ -1,4 +1,6 @@
 # Adonis Swagger
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ahmadarif/adonis-swagger.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/adonis-swagger.svg)](https://badge.fury.io/js/adonis-swagger)
 [![build status](https://travis-ci.org/ahmadarif/adonis-swagger.svg?branch=master)](https://travis-ci.org/ahmadarif/adonis-swagger)
 [![npm](https://img.shields.io/npm/dt/adonis-swagger.svg)](https://www.npmjs.com/package/adonis-swagger)
