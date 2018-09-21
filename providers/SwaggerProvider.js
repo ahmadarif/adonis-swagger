@@ -30,16 +30,16 @@ class SwaggerProvider extends ServiceProvider {
         const defaultOptions = {
           swaggerDefinition: {
             info: {
-              title: options.title,
-              version: options.version
+              title:  Config.get('swagger.options.title'),
+              version:  Config.get('swagger.options.version')
             },
-            basePath: options.basePath,
-            security: options.security,
+            basePath:  Config.get('swagger.options.basePath'),
+            security:  Config.get('swagger.options.security'),
             securityDefinitions: {
               'ApiKey': {
                 'type': 'apiKey',
-                'description': options.securityDefinitions.ApiKey.description,
-                'name': options.securityDefinitions.ApiKey.name,
+                'description': Config.get('swagger.options.securityDefinitions.ApiKey.description'),
+                'name': Config.get('swagger.options.securityDefinitions.ApiKey.name'),
                 'in': 'header'
               },
               'BasicAuth': {
@@ -48,13 +48,9 @@ class SwaggerProvider extends ServiceProvider {
               'OAuth2': {
                 'type': 'oauth2',
                 'flow': 'accessCode',
-                'authorizationUrl': options.securityDefinitions.OAuth2.authorizationUrl || 'https://example.com/oauth/authorize',
-                'tokenUrl': options.securityDefinitions.OAuth2.tokenUrl || 'https://example.com/oauth/token',
-                'scopes': options.securityDefinitions.OAuth2.scopes || {
-                  read: 'Grants read access (this is just sample)',
-                  write: 'Grants write access (this is just sample)',
-                  admin: 'Grants read and write access to administrative information (this is just sample)'
-                }
+                'authorizationUrl': Config.get('swagger.options.securityDefinitions.OAuth2.authorizationUrl'),
+                'tokenUrl': Config.get('swagger.options.securityDefinitions.OAuth2.tokenUrl'),
+                'scopes': Config.get('swagger.options.securityDefinitions.OAuth2.scopes')
               }
             }
           },
