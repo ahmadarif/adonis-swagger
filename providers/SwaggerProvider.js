@@ -11,14 +11,14 @@ class SwaggerProvider extends ServiceProvider {
     const options = Config.get('swagger.options')
 
     try {
-      if(Config.get('swagger.isCustom')) {
+      if (Config.get('swagger.isCustom')) {
 
         return swaggerJSDoc(options.options)
       }
     } catch (error) {
-      throw GE.RuntimeException.incompleteConfig(['isCustom','options'], 'config/swagger.js', 'docs')
+      throw GE.RuntimeException.incompleteConfig(['isCustom', 'options'], 'config/swagger.js', 'docs')
     }
-    
+
 
     let apis = ['app/**/*.js', 'start/routes.js']
     let apisConfig = options.apis
@@ -48,9 +48,13 @@ class SwaggerProvider extends ServiceProvider {
               'OAuth2': {
                 'type': 'oauth2',
                 'flow': 'accessCode',
-                'authorizationUrl': options.securityDefinitions.OAuth2.authorizationUrl,
-                'tokenUrl': options.securityDefinitions.OAuth2.tokenUrl,
-                'scopes': options.securityDefinitions.OAuth2.scopes
+                'authorizationUrl': options.securityDefinitions.OAuth2.authorizationUrl || 'https://example.com/oauth/authorize',
+                'tokenUrl': options.securityDefinitions.OAuth2.tokenUrl || 'https://example.com/oauth/token',
+                'scopes': options.securityDefinitions.OAuth2.scopes || {
+                  read: 'Grants read access (this is just sample)',
+                  write: 'Grants write access (this is just sample)',
+                  admin: 'Grants read and write access to administrative information (this is just sample)'
+                }
               }
             }
           },
