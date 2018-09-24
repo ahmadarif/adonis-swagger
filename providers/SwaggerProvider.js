@@ -1,31 +1,45 @@
 'use strict'
 
 const { ServiceProvider } = require('@adonisjs/fold')
+const GE = require('@adonisjs/generic-exceptions')
 
 class SwaggerProvider extends ServiceProvider {
-  _addRoutes () {
+  _addRoutes() {
     const Route = use('Route')
     const swaggerJSDoc = use('swagger-jsdoc')
     const Config = use('Config')
+    const options = Config.get('swagger.options')
+
+    try {
+      if (Config.get('swagger.isCustom')) {
+
+        return swaggerJSDoc(options.options)
+      }
+    } catch (error) {
+      throw GE.RuntimeException.incompleteConfig(['isCustom', 'options'], 'config/swagger.js', 'docs')
+    }
+
 
     let apis = ['app/**/*.js', 'start/routes.js']
-    let apisConfig = Config.get('swagger.apis')
+    let apisConfig = options.apis
     apis = apis.concat(apisConfig)
 
     if (Config.get('swagger.enable')) {
       Route.get('/swagger.json', async ({ response }) => {
-        const options = {
+
+        const defaultOptions = {
           swaggerDefinition: {
             info: {
-              title: Config.get('swagger.title'),
-              version: Config.get('swagger.version')
+              title:  Config.get('swagger.options.title'),
+              version:  Config.get('swagger.options.version')
             },
-            basePath: Config.get('swagger.basePath'),
+            basePath:  Config.get('swagger.options.basePath'),
+            security:  Config.get('swagger.options.security'),
             securityDefinitions: {
               'ApiKey': {
                 'type': 'apiKey',
-                'description': Config.get('swagger.securityDefinitions.ApiKey.description'),
-                'name': Config.get('swagger.securityDefinitions.ApiKey.name'),
+                'description': Config.get('swagger.options.securityDefinitions.ApiKey.description'),
+                'name': Config.get('swagger.options.securityDefinitions.ApiKey.name'),
                 'in': 'header'
               },
               'BasicAuth': {
@@ -34,27 +48,27 @@ class SwaggerProvider extends ServiceProvider {
               'OAuth2': {
                 'type': 'oauth2',
                 'flow': 'accessCode',
-                'authorizationUrl': Config.get('swagger.securityDefinitions.OAuth2.authorizationUrl'),
-                'tokenUrl': Config.get('swagger.securityDefinitions.OAuth2.tokenUrl'),
-                'scopes': Config.get('swagger.securityDefinitions.OAuth2.scopes')
+                'authorizationUrl': Config.get('swagger.options.securityDefinitions.OAuth2.authorizationUrl'),
+                'tokenUrl': Config.get('swagger.options.securityDefinitions.OAuth2.tokenUrl'),
+                'scopes': Config.get('swagger.options.securityDefinitions.OAuth2.scopes')
               }
             }
           },
           apis: apis
         }
 
-        return swaggerJSDoc(options)
+        return swaggerJSDoc(defaultOptions)
       })
     }
   }
 
-  _registerCommands () {
+  _registerCommands() {
     this.app.bind('Adonis/Commands/SwaggerExport', () => require('../commands/SwaggerExport'))
     this.app.bind('Adonis/Commands/SwaggerRemove', () => require('../commands/SwaggerRemove'))
     this.app.bind('Adonis/Commands/SwaggerRemoveDocs', () => require('../commands/SwaggerRemoveDocs'))
   }
 
-  _addCommands () {
+  _addCommands() {
     const ace = require('@adonisjs/ace')
     ace.addCommand('Adonis/Commands/SwaggerExport')
     ace.addCommand('Adonis/Commands/SwaggerRemove')
@@ -68,7 +82,7 @@ class SwaggerProvider extends ServiceProvider {
    *
    * @return {void}
    */
-  register () {
+  register() {
     this._registerCommands()
   }
 
@@ -79,7 +93,7 @@ class SwaggerProvider extends ServiceProvider {
    *
    * @return {void}
    */
-  boot () {
+  boot() {
     this._addCommands()
     this._addRoutes()
   }
