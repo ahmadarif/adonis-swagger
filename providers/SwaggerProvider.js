@@ -8,12 +8,11 @@ class SwaggerProvider extends ServiceProvider {
     const Route = use('Route')
     const swaggerJSDoc = use('swagger-jsdoc')
     const Config = use('Config')
-    const options = Config.get('swagger.options')
 
     try {
       if (Config.get('swagger.isCustom')) {
 
-        return swaggerJSDoc(options.options)
+        return swaggerJSDoc(Config.get('swagger.options'))
       }
     } catch (error) {
       throw GE.RuntimeException.incompleteConfig(['isCustom', 'options'], 'config/swagger.js', 'docs')
@@ -21,7 +20,7 @@ class SwaggerProvider extends ServiceProvider {
 
 
     let apis = ['app/**/*.js', 'start/routes.js']
-    let apisConfig = options.apis
+    let apisConfig = Config.get('swagger.options')
     apis = apis.concat(apisConfig)
 
     if (Config.get('swagger.enable')) {
@@ -30,11 +29,11 @@ class SwaggerProvider extends ServiceProvider {
         const defaultOptions = {
           swaggerDefinition: {
             info: {
-              title:  Config.get('swagger.options.title'),
-              version:  Config.get('swagger.options.version')
+              title: Config.get('swagger.options.title'),
+              version: Config.get('swagger.options.version')
             },
-            basePath:  Config.get('swagger.options.basePath'),
-            security:  Config.get('swagger.options.security'),
+            basePath: Config.get('swagger.options.basePath'),
+            security: Config.get('swagger.options.security'),
             securityDefinitions: {
               'ApiKey': {
                 'type': 'apiKey',
