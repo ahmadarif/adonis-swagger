@@ -20,7 +20,7 @@ class SwaggerProvider extends ServiceProvider {
 
 
     let apis = ['app/**/*.js', 'start/routes.js']
-    let apisConfig = Config.get('swagger.options')
+    let apisConfig = Config.get('swagger.options.apis')
     apis = apis.concat(apisConfig)
 
     if (Config.get('swagger.enable')) {
