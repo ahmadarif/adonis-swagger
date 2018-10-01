@@ -4,20 +4,18 @@ const { ServiceProvider } = require('@adonisjs/fold')
 const GE = require('@adonisjs/generic-exceptions')
 
 class SwaggerProvider extends ServiceProvider {
-  _addRoutes() {
+  _addRoutes () {
     const Route = use('Route')
     const swaggerJSDoc = use('swagger-jsdoc')
     const Config = use('Config')
 
     try {
       if (Config.get('swagger.isCustom')) {
-
         return swaggerJSDoc(Config.get('swagger.options'))
       }
     } catch (error) {
       throw GE.RuntimeException.incompleteConfig(['isCustom', 'options'], 'config/swagger.js', 'docs')
     }
-
 
     let apis = ['app/**/*.js', 'start/routes.js']
     let apisConfig = Config.get('swagger.options.apis')
@@ -25,7 +23,6 @@ class SwaggerProvider extends ServiceProvider {
 
     if (Config.get('swagger.enable')) {
       Route.get('/swagger.json', async ({ response }) => {
-
         const defaultOptions = {
           swaggerDefinition: {
             info: {
@@ -61,13 +58,13 @@ class SwaggerProvider extends ServiceProvider {
     }
   }
 
-  _registerCommands() {
+  _registerCommands () {
     this.app.bind('Adonis/Commands/SwaggerExport', () => require('../commands/SwaggerExport'))
     this.app.bind('Adonis/Commands/SwaggerRemove', () => require('../commands/SwaggerRemove'))
     this.app.bind('Adonis/Commands/SwaggerRemoveDocs', () => require('../commands/SwaggerRemoveDocs'))
   }
 
-  _addCommands() {
+  _addCommands () {
     const ace = require('@adonisjs/ace')
     ace.addCommand('Adonis/Commands/SwaggerExport')
     ace.addCommand('Adonis/Commands/SwaggerRemove')
@@ -81,7 +78,7 @@ class SwaggerProvider extends ServiceProvider {
    *
    * @return {void}
    */
-  register() {
+  register () {
     this._registerCommands()
   }
 
@@ -92,7 +89,7 @@ class SwaggerProvider extends ServiceProvider {
    *
    * @return {void}
    */
-  boot() {
+  boot () {
     this._addCommands()
     this._addRoutes()
   }
