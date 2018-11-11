@@ -9,52 +9,12 @@ class SwaggerProvider extends ServiceProvider {
     const swaggerJSDoc = use('swagger-jsdoc')
     const Config = use('Config')
 
-    try {
-      if (Config.get('swagger.isCustom')) {
-        return swaggerJSDoc(Config.get('swagger.options'))
-      }
-    } catch (error) {
-      throw GE.RuntimeException.incompleteConfig(['isCustom', 'options'], 'config/swagger.js', 'docs')
-    }
-
-    let apis = ['app/**/*.js', 'start/routes.js']
-    let apisConfig = Config.get('swagger.options.apis')
-    apis = apis.concat(apisConfig)
-
     if (Config.get('swagger.enable')) {
-      Route.get('/swagger.json', async ({ response }) => {
-        const defaultOptions = {
-          swaggerDefinition: {
-            info: {
-              title: Config.get('swagger.options.title'),
-              version: Config.get('swagger.options.version')
-            },
-            basePath: Config.get('swagger.options.basePath'),
-            security: Config.get('swagger.options.security'),
-            securityDefinitions: {
-              'ApiKey': {
-                'type': 'apiKey',
-                'description': Config.get('swagger.options.securityDefinitions.ApiKey.description'),
-                'name': Config.get('swagger.options.securityDefinitions.ApiKey.name'),
-                'in': 'header'
-              },
-              'BasicAuth': {
-                'type': 'basic'
-              },
-              'OAuth2': {
-                'type': 'oauth2',
-                'flow': 'accessCode',
-                'authorizationUrl': Config.get('swagger.options.securityDefinitions.OAuth2.authorizationUrl'),
-                'tokenUrl': Config.get('swagger.options.securityDefinitions.OAuth2.tokenUrl'),
-                'scopes': Config.get('swagger.options.securityDefinitions.OAuth2.scopes')
-              }
-            }
-          },
-          apis: apis
-        }
-
-        return swaggerJSDoc(defaultOptions)
-      })
+      // Get custom URL for Swagger specification, if defined.
+      const specUrl = Config.get('swagger.specUrl', '/swagger.json')
+      Route.get(specUrl, async ({ response }) => (
+        swaggerJSDoc(Config.get('swagger.options', {}))
+      ))
     }
   }
 
