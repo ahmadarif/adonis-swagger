@@ -1,7 +1,6 @@
 'use strict'
 
 const { ServiceProvider } = require('@adonisjs/fold')
-const GE = require('@adonisjs/generic-exceptions')
 
 class SwaggerProvider extends ServiceProvider {
   _addRoutes () {
