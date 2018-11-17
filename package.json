@@ -18,7 +18,6 @@
   "author": "Ahmad Arif <ahmad.arif019@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@adonisjs/generic-exceptions": "^2.0.1",
     "swagger-jsdoc": "^1.9.7"
   },
   "repository": {
