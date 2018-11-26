@@ -118,6 +118,7 @@ For detail usage, please check the swagger specification in this [link][SwaggerS
 Command                       | Description
 :-----------------------------|:-----------
  `adonis swagger:export`      | Export config file & swagger-ui assets
+ `adonis swagger:export-docs` | Export swagger-ui assets only
  `adonis swagger:remove`      | Remove config file & swagger-ui assets
  `adonis swagger:remove-docs` | Remove swagger-ui only
 
