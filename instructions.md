@@ -8,7 +8,7 @@
   ```
 
 * **Note:** For projects that uses API-only blueprint (using `--api-only` flag), please 
-  enable `Adonis/Middleware/Static` middleware in `start/kernel.js`:
+  enable `Adonis/Middleware/Static` under `serverMiddleware` in `start/kernel.js`:
   ```js
   const serverMiddleware = [
     'Adonis/Middleware/Static',
