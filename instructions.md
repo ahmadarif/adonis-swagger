@@ -1,18 +1,30 @@
-# Registering provider
-```js
-const providers = [
-  ...
-  'adonis-swagger/providers/SwaggerProvider'
-]
-```
+# Configuration
+* Register `SwaggerProvider` in `start/app.js`:
+  ```js
+  const providers = [
+    ...
+    'adonis-swagger/providers/SwaggerProvider'
+  ]
+  ```
+
+* **Note:** For projects that uses API-only blueprint (using `--api-only` flag), please 
+  enable `Adonis/Middleware/Static` middleware in `start/kernel.js`:
+  ```js
+  const serverMiddleware = [
+    'Adonis/Middleware/Static',
+    ...
+  ]
+  ```
+
+* For other configuration, please update the `config/swagger.js`.
 
 # Usage
-* Add new route
+* Add new route:
   ```js
   Route.get('/api/hello', 'TestController.hello')
   ```
 
-* Create TestController using command adonis make:controller Test
+* Create `TestController` using `adonis make:controller Test` command:
   ```js
   'use strict'
   
@@ -46,7 +58,7 @@ const providers = [
   module.exports = TestController
   ```
 
-* You can also define the schema in the Models
+* You can also define the schema in the Models:
   ```js
   'use strict'
   
@@ -93,4 +105,4 @@ const providers = [
 
   > For custom directory, please change the `config/swagger.js` as needed.
 
-* Other sample in YAML and JS format please refer this [link](https://github.com/ahmadarif/adonis-swagger/tree/master/sample)
+* For other sample in YAML and JS format, please refer to this [link](https://github.com/ahmadarif/adonis-swagger/tree/master/sample)
