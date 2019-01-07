@@ -21,15 +21,24 @@ adonis install adonis-swagger
   ]
   ```
 
-* Other configuration please update the `config/swagger.js` file.
+* **Note:** For projects that uses API-only blueprint (using `--api-only` flag), please 
+  enable `Adonis/Middleware/Static` under `serverMiddleware` in `start/kernel.js`:
+  ```js
+  const serverMiddleware = [
+    'Adonis/Middleware/Static',
+    ...
+  ]
+  ```
+
+* For other configuration, please update the `config/swagger.js`.
 
 # Sample Usage
-* Add new route
+* Add new route:
   ```js
   Route.get('/api/hello', 'TestController.hello')
   ```
 
-* Create TestController using command adonis make:controller Test
+* Create `TestController` using `adonis make:controller Test` command:
   ```js
   'use strict'
   
@@ -63,7 +72,7 @@ adonis install adonis-swagger
   module.exports = TestController
   ```
 
-* You can also define the schema in the Models
+* You can also define the schema in the Models:
   ```js
   'use strict'
   
@@ -108,18 +117,17 @@ adonis install adonis-swagger
   │       ├── **/*.yml
   ```
 
-* Other sample in YAML and JS format please refer this [link](/sample)
+* For other sample in YAML and JS format, please refer to this [link](/sample).
 
-
-Open http://localhost:3333/docs in your browser, ayeey 🎉 </br>
-For detail usage, please check the swagger specification in this [link][SwaggerSpec].
+Open http://localhost:3333/docs in your browser, ayeey 🎉  
+For detail usage, please check the Swagger specification in this [link][SwaggerSpec].
 
 # Command List
 Command                       | Description
 :-----------------------------|:-----------
- `adonis swagger:export`      | Export config file & swagger-ui assets
- `adonis swagger:remove`      | Remove config file & swagger-ui assets
- `adonis swagger:remove-docs` | Remove swagger-ui only
+ `adonis swagger:export`      | Export config file & `swagger-ui` assets. <br>**Warning: This will reset your `config/swagger.js`!**<br>Please use with caution.
+ `adonis swagger:remove`      | Remove config file & `swagger-ui` assets
+ `adonis swagger:remove-docs` | Remove `swagger-ui` only
 
 # Dependencies
 - [swagger-jsdocs](https://www.npmjs.com/package/swagger-jsdoc)
