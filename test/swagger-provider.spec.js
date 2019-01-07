@@ -23,7 +23,7 @@ test.group('Swagger provider test', (group) => {
   }).timeout(0)
 
   test('Check is swagger:export-docs command available', async (assert) => {
-    assert.equal('swagger:export', ioc.use('Adonis/Commands/SwaggerExportDocs')._name)
+    assert.equal('swagger:export-docs', ioc.use('Adonis/Commands/SwaggerExportDocs')._name)
   }).timeout(0)
 
   test('Check is swagger:remove command available', async (assert) => {
