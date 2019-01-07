@@ -125,9 +125,10 @@ For detail usage, please check the Swagger specification in this [link][SwaggerS
 # Command List
 Command                       | Description
 :-----------------------------|:-----------
- `adonis swagger:export`      | Export config file & `swagger-ui` assets. <br>**Warning: This will reset your `config/swagger.js`!**<br>Please use with caution.
- `adonis swagger:remove`      | Remove config file & `swagger-ui` assets
- `adonis swagger:remove-docs` | Remove `swagger-ui` only
+ `adonis swagger:export`      | Export config file & swagger-ui assets
+ `adonis swagger:export-docs` | Export swagger-ui assets only
+ `adonis swagger:remove`      | Remove config file & swagger-ui assets
+ `adonis swagger:remove-docs` | Remove swagger-ui only
 
 # Dependencies
 - [swagger-jsdocs](https://www.npmjs.com/package/swagger-jsdoc)
