@@ -18,7 +18,7 @@
   "author": "Ahmad Arif <ahmad.arif019@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "swagger-jsdoc": "^1.9.7"
+    "swagger-jsdoc": "^3.2.9"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "coveralls": "^3.0.0",
     "japa": "^1.0.6",
     "japa-cli": "^1.0.1",
-    "nyc": "^11.4.1",
+    "nyc": "^14.1.0",
     "standard": "^11.0.0"
   },
   "nyc": {
